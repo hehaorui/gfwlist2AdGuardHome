@@ -40,7 +40,7 @@ test -z "$dom_list" && temporary_file=$(mktemp) || temporary_file='domain_list.t
 base64 -d       </dev/null &>/dev/null && base64='base64 -d'
 base64 --decode </dev/null &>/dev/null && base64='base64 --decode'
 [ "$base64" ] || { echo "[ERR] Command not found: 'base64'" 1>&2; exit 1; }
-curl -4sSkL https://raw.github.com/gfwlist/gfwlist/master/gfwlist.txt | $base64 | { perl -pe '
+curl -4sSkL https://raw.kkgithub.com/gfwlist/gfwlist/master/gfwlist.txt | $base64 | { perl -pe '
 if (/URL Keywords/i) { $null = <> until $null =~ /^!/ }
 s#^\s*+$|^!.*+$|^@@.*+$|^\[AutoProxy.*+$|^/.*/$##i;
 s@^\|\|?|\|$@@;
